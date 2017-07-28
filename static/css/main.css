@@ -7281,6 +7281,9 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     margin-bottom: 10px;
     display: inline-block; } }
 
+html {
+  font-size: 10px; }
+
 /* reset from content builder */
 .row > * {
   min-height: 0; }
