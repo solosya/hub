@@ -33,7 +33,7 @@
 
         .navbar-brand {
             padding:0;
-            height:46px;
+            // height:46px;
             @media screen and (max-width: $mobile-break){
                 margin-top:0;
                 padding:8px;
@@ -44,8 +44,8 @@
                 }
             }
             > img.main-logo {
-                margin-top: 10px;
-                height:46px;
+                // margin-top: 10px;
+                // height:46px;
 
                 @media screen and (max-width: $mobile-break){
                     display:none;
