@@ -8482,8 +8482,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
       height: 60px; }
       @media screen and (max-width: 620px) {
         .site-header .site-header-main .navbar-brand {
-          margin-top: 0;
-          padding: 8px; } }
+          margin-top: 0; } }
       @media screen and (min-width: 620px) {
         .site-header .site-header-main .navbar-brand > img.mobile-logo {
           display: none; } }
