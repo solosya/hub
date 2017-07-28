@@ -1,10 +1,18 @@
+{% set logo = networkData.templatePath~'/static/images/logo.svg'%}
+{% if networkData.logoMedia | length > 0 %}
+    {% set logo = _Media.getMediaUrl(networkData.logoMedia, 290, 80, {'crop': 'fit'} )%}
+{% endif %}
+
+
+
+
 <!--footer-->
 <footer class="site-footer">
     <div class="container">        
         <div class="row">
             <div class="col-sm-6 col-md-6 icon-wrapper">
                 <a class="footer-brand" href="http://www.mindsglobalspotlight.com/" rel="Home" tabindex="-1" title="Home">
-                    <img height="46" src="{{networkData.templatePath}}/static/images/footer-logo2.svg" alt="logo" class="main-logo">
+                    <img src="{{logo}}" alt="logo" class="main-logo">
                 </a>
             </div><!-- .col-sm-3-->
 
