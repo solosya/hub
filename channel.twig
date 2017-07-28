@@ -1,0 +1,119 @@
+{% set networkData = _Network.getNetworkData() %}
+
+{% set blogInfo = _Blog.getBlog() %}
+{{ set(this, 'title', blogInfo.title) }}
+
+
+{{this.registerJs("CardController();")}}
+{# {{this.registerJs("BlogController();")}} #}
+
+{% set limit = 10 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+
+{% set status = 'follow' %}
+{% set text = 'Follow +' %}
+{% if not _User.isGuset() and _User.isUserFollowing('blog', article.blog['id'])%}
+    {% set status = 'unfollow' %}
+    {% set text = 'Following -' %}
+{% endif %}
+
+
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+{# blogInfo.title #}
+    
+    
+        <section class="home-page-content">
+            <div class="container section">
+                <div class="row header">
+                    <div class="col-sm-12">
+                        <h2>Global Spotlight</h2>
+                        <h1>{{blogInfo.title | upper}}</h1>
+                    </div>
+                </div>
+
+
+                {% if blogInfo.shortDescription %}
+                <div class="row description">
+                    <div class="col-sm-12 col-md-8">
+                        <p>{{blogInfo.shortDescription}}</p>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                <div class="row">
+                    
+
+                    <div class="col-sm-12 col-md-8 main-content">
+
+                        {% if articles[articleCount] %}                                                                
+                        
+                            <div class="">
+                                {% if articles[0] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'card-lg s750x375'}) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                                {% endif %}
+
+
+                                {% for i in 0..4 %}
+                                    {% if articles[articleCount] %}                                                                
+                                        {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec s330x235'}) | raw}}
+                                        {% set articleCount = articleCount + 1 %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div><!-- .card-group-->
+                        {% endif %}
+
+                        {% if articles|length >= limit %}
+                            <div class="">
+                                <div class="ajaxArticles clearfix"
+                                     data-offset="{{limit}}"
+                                     data-containerclass="card-rec"
+                                     data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
+                                 </div>
+                                <a class="loadMoreArticles" href="#">LOAD MORE</a>
+                            </div>
+
+                            {% set noDataCls = 'hide' %}
+                            {% if articles|length == 0 %}
+                                {% set noDataCls = '' %}
+                             {% endif %}
+                            <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
+                                <p class="no-data text-center">No articles found.</p>  
+                            </div>
+                        {% endif %}
+
+
+
+
+                    </div><!-- .col-sm-8-->
+
+
+
+
+
+                    <div class="col-sm-12 col-md-4 sidebar">
+                        <div class="row">
+                            {% for i in 0..3 %}
+                                {% if articles[articleCount] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-sm s265x242 col-sm-6 col-md-12'}) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+
+            </div><!-- .container-->
+        </section><!-- .home-page-content-->
+
+
+

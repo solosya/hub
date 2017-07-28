@@ -1,0 +1,123 @@
+body.channel.hotspots {
+
+    .hotspot {
+        margin-bottom: 55px;
+
+        h1 {
+            font-size: rem(26);
+            margin-bottom: 12px;
+        }
+
+        .card-sm {
+            margin-bottom:0;
+            margin-left: 60px;
+            figure {
+                height:250px;
+                @media screen and (max-width: $mobile-break){
+                    width: 116px;
+                    height:116px;
+                    flex: 0 0 116px;
+                }
+
+            }
+            h2 {
+                font-weight: bold;
+                line-height: 1.29;
+            }
+        }
+        .card-lg {
+            margin-bottom:0;
+            
+        }
+        .line {
+            width:100%;
+            border-bottom: 1px solid #979797;
+            margin-top: 30px;
+        }
+
+        // @media screen and (max-width: $mmd-break-down){
+        //     .card-sm {
+        //         margin-top:20px;
+        //         margin-left:0;
+        //     }
+        // }
+
+        @media screen and (max-width: $mmd-break-down){
+
+            .card-sm {
+                margin-top:20px;
+                margin-left:0;
+                a.card {
+                    height:auto;
+                    
+                    figure {
+                        float:left;
+                    }
+
+
+                    .content {
+                        height:242px;
+                        padding: 23px 28px 0 24px;
+                        width:auto;
+
+                        .category {
+                            margin-bottom: 15px;
+                        }
+
+                        h2 {
+                            font-weight: bold;
+                            font-size: rem(24);
+                            height: 64px;
+                            margin-bottom: 7px;
+                            line-height: 1.3em;
+                        }
+                        >p {
+                            display:block;
+                            height: 66px;
+                            font-size: rem(16);
+                            padding-bottom: 16px;
+                            margin-bottom: 16px;
+                            border-bottom: 2px solid #dadada;
+                        }
+                    }
+                }
+
+                @media screen and (max-width: $mobile-break){
+                    a.card {
+                        margin-top:20px;
+                        margin-left:-15px;
+                        height:auto;
+
+                        figure {
+                            float:left;
+                        }
+
+
+                        .content {
+                            height:115px;
+                            padding: 7px 0 0 10px;
+                            width:100%;
+
+
+                            .category {
+                                margin-bottom: 5px;
+                            }
+
+                            h2 {
+                                font-weight: normal;
+                                font-size: rem(16);
+                                // height: 64px;
+                                margin-bottom: 7px;
+                                line-height: 1.3em;
+                            }
+                            >p {
+                                display:none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

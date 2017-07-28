@@ -1,0 +1,138 @@
+<!--footer-->
+<footer class="site-footer">
+    <div class="container">        
+        <div class="row">
+            <div class="col-sm-6 col-md-6 icon-wrapper">
+                <a class="footer-brand" href="http://www.mindsglobalspotlight.com/" rel="Home" tabindex="-1" title="Home">
+                    <img height="46" src="{{networkData.templatePath}}/static/images/footer-logo2.svg" alt="logo" class="main-logo">
+                </a>
+            </div><!-- .col-sm-3-->
+
+            <div class="col-sm-6 col-md-6 icon-wrapper minds-logo">
+                <a class="" href="http://www.mindsglobalspotlight.com/" rel="Home" tabindex="-1" title="Home">
+                    <img width="125" height="35" src="{{networkData.templatePath}}/static/images/minds@2x.png" alt="logo" class="main-logo">
+                </a>
+            </div><!-- .col-sm-3-->
+        </div><!--row-->
+
+
+        <div class="row footer-middle">
+            <div class="col-sm-12 contact visible-xs-block">
+                <div class="section-links-mobile">
+                    <ul>
+                        {% set menuItems = blog.blogFooterMenu %}
+                        {% for i, parentItem in menuItems %}
+                            {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                            {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                            
+                            <li>
+                                <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                    {% if parentItem.label != "" %}
+                                      {{parentItem.label | upper}}
+                                    {% elseif parentItem.blogTitle != "" %}
+                                       {{parentItem.blogTitle | upper}}
+                                    {% elseif parentItem.pageTitle != "" %}
+                                       {{parentItem.pageTitle | upper}}
+                                    {% endif %}
+                                </a>
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+                </div>
+
+            </div><!-- .col-sm-12-->
+
+
+
+            <div class="col-xs-12 col-sm-offset-3 col-lg-offset-4 col-sm-6 hidden-xs">
+                <div class="section-links">
+                    <ul class="left">
+                        {% set menuItems = blog.blogFooterMenu %}
+                        {% for i, parentItem in menuItems if i < 3 %}
+                            {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                            {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                            
+                            <li>
+                                <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                    {% if parentItem.label != "" %}
+                                      {{parentItem.label | upper}}
+                                    {% elseif parentItem.blogTitle != "" %}
+                                       {{parentItem.blogTitle | upper}}
+                                    {% elseif parentItem.pageTitle != "" %}
+                                       {{parentItem.pageTitle | upper}}
+                                    {% endif %}
+                                </a>
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                    <ul class="right">
+                        {% for i, parentItem in menuItems if i > 2 %}
+                            {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                            {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                            
+                            <li>
+                                <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                    {% if parentItem.label != "" %}
+                                      {{parentItem.label | upper}}
+                                    {% elseif parentItem.blogTitle != "" %}
+                                       {{parentItem.blogTitle | upper}}
+                                    {% elseif parentItem.pageTitle != "" %}
+                                       {{parentItem.pageTitle | upper}}
+                                    {% endif %}
+                                </a>
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+
+                </div>
+            </div><!-- .col-sm-6-->
+
+
+
+
+
+            <div class="col-sm-3 col-md-3 col-lg-2 contact">
+{#                 <h2>Contact us</h2>
+                <p>1500 342 958</p>
+                <a mailto="info@globalspotlight.com">info@globalspotlight.com</a>
+ #}                <ul class="social-links">
+                    <li><a class="facebook" href="https://www.facebook.com/MINDSInternat/"></a></li>
+                    <li><a class="twitter" href="https://twitter.com/MINDS_Internat"></a></li>
+                    <li><a class="vimeo" href="https://vimeo.com/mindsinternational"></a></li>
+                </ul>
+
+            </div><!-- .col-sm-12-->
+
+        </div><!-- .row-->
+
+        <div class="row bottom">
+            <div class="col-xs-12 col-sm-9 bottom-links">
+{#                 <ul>
+                    <li><a href="">Copyright</a></li>
+                    <li><a href="">Disclaimer</a></li>
+                    <li><a href="">Privacy</a></li>
+                </ul>
+ #}            </div>
+
+            <div class="col-xs-12 col-sm-3 publish">
+                <div class="publish-mobile">
+                    <span><a href="https://publish.aap.com.au">POWERED BY AAP PUBLISH</a></span>
+                </div><!-- .col-sm-12-->
+            </div>
+
+
+        </div>
+
+
+    </div><!-- .container-->
+
+    
+</footer>

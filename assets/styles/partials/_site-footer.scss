@@ -1,0 +1,310 @@
+.site-footer{
+    width: 100%;
+    margin-top: 0;
+    background: #000000;
+
+    @media screen and (max-width: $sm-break){
+        margin-top: 55px;
+    }
+
+    .footer-menu{
+        padding-bottom: 26px;
+        @media screen and (max-width: $sm-break){
+            display: none;
+        }
+        > ul{
+            @extend %ulmenu;
+
+            > li{
+                margin-right: 50px;
+
+                > a{
+                    color: #FFF;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+    .icon-wrapper{
+        position:relative;
+        span {
+            display:none;
+
+            @media screen and (max-width: $sm-break){
+                position:absolute;
+                bottom:0;
+                right:20px;
+                display: inline-block;
+                font-family: $font-family-sans-serif;
+                font-size:em(10);
+            }
+
+            a {
+                color:white;
+                text-decoration:none;
+            }
+
+
+        }
+    }
+
+    .minds-logo {
+        text-align:right;
+        @media screen and (max-width: $sm-break){
+            text-align:left;
+        }
+
+        a {
+            display:inline-block;
+            margin-top: 50px;
+
+            @media screen and (max-width: $sm-break){
+                margin: 20px 0;
+            }
+
+
+        }
+    }
+
+    .footer-brand{
+        display: inline-block;
+        width: 64px;
+        height: 71px;
+        margin:30px 15px 60px 0;
+
+        @media screen and (max-width: $sm-break){
+            margin-bottom:30px;
+            margin-left: -7px;
+        }
+
+        >img {
+            width: 265px;
+            // margin-left: -40px;
+        }
+
+    }
+
+    .contact {
+        text-align:right;
+        color:white;
+
+        @media screen and (max-width: $sm-break){
+            text-align:left;
+        }
+
+
+
+        h2 {
+            font-size: rem(14);
+            margin-bottom:10px;
+        }
+        p {
+            opacity:0.8;
+            font-size: rem(14);
+            font-weight:normal;
+        }
+        a {
+            opacity:0.8;
+            font-size: rem(14);
+            color:white;
+        }
+    }
+
+    .symbol{
+        margin-right: 46px;
+        padding-top: 15px;
+        @media screen and (max-width: $sm-break){
+            float: left;
+        }
+        @media screen and (max-width: $mobile-break){
+            padding-top: 155px;
+            width: 55px;
+            padding-top: 45px;
+        }
+    }
+
+    .footer_btn-lg{
+        background-color: #e22f22;
+        color: #FFF;
+        padding-top: 20px;
+        @media screen and (max-width: $sm-break){
+            float: right;
+        }
+
+        > a {
+            font-family: 'IM Fell Great Primer', serif;
+            color: #FFF;
+            font-size: 16px;
+            font-weight: normal;
+
+            }
+        > div {
+            background-color: white;
+            margin-top: 20px;
+            > input {
+                 font-family: 'PT Sans', Tahoma, Arial, serif;
+                 color: #000;
+            }
+        }
+        
+
+
+    }
+
+    .footer-middle {
+        margin-bottom:30px;
+    }
+
+
+    .social-links{
+
+        margin-bottom:0;
+        padding:0;
+
+        > li{
+            display:inline-block;
+            width:20px;
+            height:40px;
+            margin-right:10px;
+            > a{
+                display: block;
+                width: 100%;
+                height: 100%;
+                &.facebook {
+                    background: url('../images/facebook.svg') no-repeat center;
+                }
+                &.twitter {
+                    background: url('../images/twitter.svg') no-repeat center;
+                }
+                &.vimeo {
+                    background: url('../images/vimeo.svg') no-repeat center;
+                }
+            }
+        }
+    }
+
+    .publish-mobile {
+        position:relative;
+
+        span {
+            color:white;
+            font-size: em(10);
+            font-family: $font-family-sans-serif;
+
+            a {
+                color:white;
+                text-decoration:none;
+            }
+        }
+    }
+
+
+    .publish {
+        text-align:right;
+        margin-bottom:30px;
+        position:relative;
+        vertical-align:bottom;
+
+        @media screen and (max-width: $sm-break){
+            text-align:left;
+        }
+
+
+
+
+       a {
+            color:white;
+            font-size: em(11);
+            font-family: $font-family-sans-serif;
+            text-decoration:none;
+        }
+    }
+
+    .section-links-mobile{
+        margin-bottom:35px;
+
+        > ul{
+            @extend %ulmenu;
+            @media screen and (max-width: $sm-break){
+                display: block;
+                padding-top: 15px;
+            }
+            li{
+                
+                margin-right: 50px;
+                &:last-child{
+                    margin-right: 0;
+                }
+
+                @media screen and (max-width: $sm-break){
+                    margin-bottom: 15px;
+                }
+
+                a{
+                    font-size: rem(14);
+                    display: block;
+                    color:white;
+                }
+            }
+        }
+    }
+
+    .section-links{
+        > * {
+            display:inline-block;
+            vertical-align: top;
+            line-height: normal;
+        }
+
+        > ul.left {
+            width: 240px;
+            border-right:1px solid white;
+        }   
+        > ul.right {
+            margin-left:20px;
+        }   
+
+        > ul{
+            // display:inline-block;
+            padding:0;
+
+            li{
+                list-style-type: none;
+                margin-bottom:15px;
+                a{
+                    font-size: rem(12);
+                    display: block;
+                    color:white;
+                }
+            }
+        }
+    }
+
+
+
+    .bottom-links {
+        ul {
+            padding:0;
+
+            li {
+                display:inline-block;
+                margin-right:17px;
+                a {
+                    font-size: rem(10);
+                    letter-spacing: 0.4px;
+                    color:#fff;
+                }
+            }
+
+
+
+        }
+
+    }
+    .bottom {
+        padding-top:10px;
+        border-top:1px solid rgba(255,255,255,.4);
+    }
+
+}

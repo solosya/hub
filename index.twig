@@ -1,0 +1,202 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData      = _Blog.getBlog() %}
+{% set blogName      = blogData.title %}
+
+{% macro smartquotes(text) %}
+    {{text|replace({'/[^"]/': '&ldquo;', "/[^'']/": '&lsquo;', "'": '&rsquo;', '"': '&rdquo;'})}}
+{% endmacro %}
+
+
+{{this.registerJs("CardController();")}}
+
+{% set limit = 8 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+{# {% set recentArticles = _Article.getRecentArticles({'limit': 5}) %} #}
+{% set popularArticles = _Article.getPopularArticles({ limit: 4, sortBy: 'VIEWS' }) %}
+
+    {% set sections =  {
+            "solutions": {
+                "feed": "",
+                "link": "",
+                "limit": 4,
+                "id" : ""
+            },
+            "videos": {
+                "feed": "",
+                "link": "",
+                "limit": 4,
+                "id" : ""
+            }
+        }
+    %}
+
+    {% for key, value in sections %}
+        {% for blog in networkData.networkBlogs %}
+            {% if blog.title | lower == key %}
+                {% set sections = sections | merge({
+                    (key) : {
+                        'feed': _Blog.getBlogFeed({'limit': value['limit'], 'offset': 0, 'blogid':blog.guid}),
+                        'link' : blog.link,
+                        'id' : blog.guid
+                        }
+                    }) %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    <main id="main" class="site-main" role="main">
+        
+
+        {% if articles|length > 0 %}
+
+
+        <section class="featured-slider">
+            <div class="">
+                {% if articles[0] %}                                                                
+                    {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'swiper-slide s1168x587'}) | raw}}
+                    {% set articleCount = articleCount + 1 %}
+                {% endif %}
+            </div><!-- .swiper-container-->
+        </section><!-- .featured-slider-->
+        {% endif %}
+
+        <section class="home-page-content container">
+
+            <div class="row index-top">
+
+                <div class="col-sm-12 col-md-8 main-content">
+                    {% for i in 0..4 %}
+                        {% if articles[articleCount] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec s330x235'}) | raw}}
+                            {% set articleCount = articleCount + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                
+
+                    {{ this.render('partials/ajaxarticles.twig', {
+                        limit: limit, 
+                        non_pinned: articlesArr.existingNonPinnedCount, 
+                        articles: articles,
+                        card_style: "col-sm-4 card-sm",
+                        container:"mainAjaxArticles"
+                    }) | raw }}
+
+                </div><!-- .col-sm-8-->
+
+
+                <div class="col-sm-12 col-md-4 sidebar">
+
+                    <section class="row cta">
+                        <div class="row">
+                            <a href="{{networkData.defaultBlogUrl}}/the-project">
+                                <div class="col-sm-12">
+                                    <h1>The Global Spotlight Project</h1>
+                                    <p>A special journalism collaboration in 2017</p> 
+                                </div>
+                            </a>
+                        </div>
+                    </section>
+
+
+
+                    <section class="row sidebar-news">
+
+                        <div class="col-sm-12 sidebar-top hidden-xs">
+                            <div class="row">
+                                <header>
+                                    <h3>Popular Stories</h3>
+                                </header>
+                                {% if popularArticles|length > 0 %}
+                                    {% for i in 0..3 %}
+                                        {% if popularArticles[i] %}
+                                            {{this.render('partials/_single-article.twig', {article: popularArticles[i], swap: 'false', containerClass: 'col-xs-12 col-sm-6 col-md-12 s100x110'}) | raw}}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 sidebar-bottom">
+                            <div class="row">
+                                {# {% for i in 0..1 %} #}
+                                {% if articles[articleCount] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-xs-12  card-sm s300x242'}) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                                    {% endif %}
+                                {# {% endfor %} #}
+                            </div>
+                        </div> 
+                    </section><!-- .sidebar-news -->
+
+
+
+
+
+                </div><!-- .col-sm-4-->
+
+                <div style="clear:both"></div>
+
+
+            </div><!-- .row-->
+
+
+            {% if sections['solutions'].feed.articles|length > 0 %}
+            <div class="row index-bottom">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>The Solutions</h3>
+                        </div>
+
+                        {% for i in 0..3 %}
+                            {% if sections['solutions'].feed.articles[i] %}                                                                
+                                {{this.render('partials/_single-article.twig', {article: sections['solutions'].feed.articles[i], swap: 'false', containerClass: 'col-xs-12 col-sm-6 col-md-3 card-sm s265x242'}) | raw}}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            
+
+
+
+
+        </section><!-- .home-page-content-->
+
+
+        {% if sections['videos'].feed.articles|length > 0 %}
+
+        <section class="videos-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h3>Videos</h3>
+                            </div>
+
+                            {% for i in 0..3 %}
+                                {% if sections['videos'].feed.articles[i] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: sections['videos'].feed.articles[i], swap: 'false', containerClass: 'col-xs-12 col-sm-6 col-md-3 card-sm s265x242'}) | raw}}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+
+
+
+    </main><!-- .site-main -->

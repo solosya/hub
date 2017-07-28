@@ -1,0 +1,56 @@
+//Bootstrap
+@import "variables";
+@import "bootstrap";
+@import "functions";
+@import "bootbox";
+@import "font-awesome-4.7.0/scss/font-awesome";
+@import "mixins";
+@import "login";
+@import "profile";
+@import "user_profile";
+@import "user_posts";
+// @import "profile-admin";
+@import "modal";
+@import "menu";
+
+
+
+//Partials
+@import "common";
+// @import "icons";
+@import "placeholder";
+@import "sidebar-news";
+// @import "most-popular";
+@import "site-footer";
+@import "page-hero";
+
+//Header
+@import "primary-menu";
+@import "site-header";
+
+//Home page
+// @import "slider";
+@import "page-index";
+
+// MODAL
+
+//Article page
+@import "article";
+
+//Section page
+@import "section-page";
+
+//Static Pages
+@import "page-about";
+@import "page-project";
+
+// layouts
+@import "page-hotspot";
+
+
+//Cards
+@import "card";
+@import "card-slider";
+@import "card-rec";
+@import "card-sm";
+@import "card-lg";

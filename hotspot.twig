@@ -1,0 +1,118 @@
+{% set networkData = _Network.getNetworkData() %}
+
+{% set blogInfo = _Blog.getBlog() %}
+{{ set(this, 'title', blogInfo.title) }}
+
+
+{{this.registerJs("CardController();")}}
+{# {{this.registerJs("BlogController();")}} #}
+
+
+    {% set sections =  {
+            "the americas": {
+                "feed": "",
+                "link": "",
+                "limit": 2,
+                "id" : ""
+            },
+            "middle east": {
+                "feed": "",
+                "link": "",
+                "limit": 2,
+                "id" : ""
+            },
+            "southeast asia": {
+                "feed": "",
+                "link": "",
+                "limit": 2,
+                "id" : ""
+            },
+            "southern sahara": {
+                "feed": "",
+                "link": "",
+                "limit": 2,
+                "id" : ""
+            },
+        }
+    %}
+
+    {% for key, value in sections %}
+        {% for blog in networkData.networkBlogs %}
+            {% if blog.title | lower == key %}
+                {% set sections = sections | merge({
+                    (key) : {
+                        'feed': _Blog.getBlogFeed({'limit': value['limit'], 'offset': 0, 'blogid':blog.guid}),
+                        'link' : blog.link,
+                        'id' : blog.guid
+                        }
+                    }) %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+ 
+    
+        <section class="home-page-content">
+            <div class="container section">
+                <div class="row header">
+                    <div class="col-sm-12">
+                        <h2>Global Spotlight</h2>
+                        <h1>{{blogInfo.title | upper}}</h1>
+                    </div>
+                </div>
+
+
+                {% if blogInfo.shortDescription %}
+                <div class="row description">
+                    <div class="col-sm-12 col-md-8">
+                        <p>{{blogInfo.shortDescription}}</p>
+                    </div>
+                </div>
+                {% endif %}
+
+
+                <div class="row">
+                    
+                    <div class="col-sm-12">
+
+                        {% for key, value in sections %}
+                            {% if sections[key].feed.articles|length > 0 %}
+                                <div class="row hotspot">
+                                    <div class="col-sm-12">
+                                        <a href="{{sections[key].link}}"><h1>{{key | title}}</h1></a>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-8">
+                                        {% if sections[key].feed.articles[0] %}                                                                
+                                            {{this.render('partials/_single-article.twig', {article: sections[key].feed.articles[0], containerClass: 'card-lg s750x375'}) | raw}}
+                                        {% endif %}
+                                    </div>
+                                    
+                                    <div class="col-sm-12 col-md-4">
+                                        {% if sections[key].feed.articles[1] %}                                                                
+                                            {{this.render('partials/_single-article.twig', {article: sections[key].feed.articles[1], containerClass: 'card-sm s265x242'}) | raw}}
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="line"></div>
+                                    </div>
+                                </div><!-- .card-group-->
+                            {% endif %}
+
+
+                        {% endfor %}
+
+                    </div><!-- .col-sm-8-->
+
+
+
+
+
+
+
+            </div><!-- .container-->
+        </section><!-- .home-page-content-->
+
+
+

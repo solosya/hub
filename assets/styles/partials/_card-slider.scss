@@ -1,0 +1,352 @@
+.banner-image {
+    height: 572px;
+    width: 100%;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    position: absolute;    
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      opacity: 0.4;
+      background-color: #000;
+
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.69+0,0.31+37,0+100 */
+        // background: -moz-linear-gradient(top, rgba(0,0,0,0.69) 0%, rgba(0,0,0,0.31) 37%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+        // background: -webkit-linear-gradient(top, rgba(0,0,0,0.69) 0%,rgba(0,0,0,0.31) 37%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+        // background: linear-gradient(to bottom, rgba(0,0,0,0.69) 0%,rgba(0,0,0,0.31) 37%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+      z-index: 1;
+    }
+
+    @media screen and (max-width: $mobile-break){
+        height: 290px;
+    }
+
+}
+
+
+.featured-slider{
+    margin-bottom: 87px;
+
+
+    @media screen and (max-width: $mobile-break){
+        margin-bottom: 32px;
+    }
+
+
+
+    @media screen and (max-width: $sm-break){
+        // margin-left: -15px;
+        // margin-right: -15px;
+    }
+
+    .featured {
+        width:100%;
+    }
+
+
+
+    a.card {
+
+        height: 572px;
+
+        @media screen and (max-width: $mobile-break){
+            height: 290px;
+        }
+
+        @media screen and (max-width: $sm-break){
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        article {
+            position:relative;
+            display: flex;
+            flex-direction:row;
+            white-space: nowrap;
+
+            @media screen and (max-width: $mobile-break){
+                display: block;
+            }
+
+            > figure{
+                position: absolute;
+                left: 0;
+                top: 0;
+                height:100%;
+                width: 100%;
+
+                @include tintbefore();
+
+                > img{
+                    max-width: 100%;
+                }
+            }
+
+            .content{
+                
+                vertical-align: top;
+                line-height: normal;
+
+                height: auto;
+                max-height:587px;
+                padding: 160px 15px 10px 0;
+                z-index: 2;
+
+
+                // below make content behave like bootstrap container
+                @include container-fixed;
+                @media (min-width: $screen-sm-min) {
+                  width: $container-sm;
+                  max-width: $container-sm;
+                }
+                @media (min-width: $screen-md-min) {
+                  width: $container-md;
+                  max-width: $container-md;
+
+                }
+                @media (min-width: $screen-lg-min) {
+                  width: $container-lg;
+                  max-width: $container-lg;
+                }
+
+
+                @media screen and (max-width:1600px){
+                    padding: 165px 15px 5px 15px;
+                }
+
+                //                 // Not under:                     Not over:
+                @media screen and (min-width:$mobile-break) and (max-width:$sm-break){
+                    padding: 170px 15px 15px 15px;
+                }
+
+                @media screen and (max-width: $mobile-break){
+                    width: 100%;
+                    height:100%;
+                    position: absolute;
+                    top:0;
+                    padding:63px 20px 0 20px;
+                    color: #FFF;
+                }
+                
+
+                .category{
+                    -ms-flex-negative:0;-webkit-flex-shrink:0;flex-shrink:0;-moz-flex-shrink:0;
+                    order:1;
+                    font-size: rem(11);
+                    margin-bottom: 7px;
+                    display: block;
+                    max-height:20px;
+                    text-transform:uppercase;
+
+                    @media screen and (max-width: $mobile-break){
+                        font-family: $font-family-sans-serif;
+                        font-size: em(10);
+                        // margin-bottom: 35px;
+
+                    }
+                }
+
+                h2{
+                    order:3;
+                    width:600;
+                    max-width:600px;
+                    font-size: rem(46);
+                    color:white;
+                    margin-bottom: 8px;
+                    line-height: 1.1;
+                    padding:0;
+                    padding-bottom: 8px;
+                    max-height: 150px;
+
+                    @media screen and (max-width: $md-break){
+                       font-size: em(40);
+                    }
+
+                    @media screen and (max-width: $sm-break){
+                         font-size: em(35);
+                         border: 0;
+                    }
+                
+
+                    @media screen and (max-width: $mobile-break){
+                        min-height:66px;
+                        max-height:90px;
+                        font-size: rem(30);
+                        margin-bottom:0;
+                    }
+
+
+                }
+
+                > p {
+                    // -webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-moz-flex:1 0 0;
+                    order:4;
+                    font-family:$font-family-serif;
+                    font-style:italic;
+                    font-size: rem(16);
+                    min-height:0;
+                    line-height:1.5em;
+                    color:white;
+                    max-height:50px;
+                    margin-bottom:0;
+                    margin-top:10px;
+                    width:600;
+                    max-width:600px;
+
+                    @media screen and (max-width: $mobile-break){
+                        max-height:40px;
+                        padding:0;
+                        font-size: rem(14);
+                        line-height:1.3em;
+
+
+                    }
+
+
+                    // @media screen and (max-width: $mobile-break){
+                    //     display:none;
+                    // }
+                }
+
+                time{
+                    -ms-flex-negative:0;-webkit-flex-shrink:0;flex-shrink:0;-moz-flex-shrink:0;
+                    order:2;
+                    color:#fff;
+                    font-size: rem(12);
+                    max-height:30px;
+                    margin-bottom:38px;
+                    font-style:italic;
+                    padding:0;
+                    // @media screen and (max-width: 1100px){
+                    //     display:none;
+                    // }
+
+                    @media screen and (max-width: $mobile-break){
+                        font-size: em(10);
+                        padding-top:5px;
+                        font-style:italic;
+                        font-family: $font-family-serif;
+                        border: 0;
+                        color: #dadada;
+                        font-weight: normal;
+                        margin-bottom:20px;
+
+                    }
+                }
+
+                .author{
+                    // display:none;
+                    -ms-flex-negative:0;-webkit-flex-shrink:0;flex-shrink:0;-moz-flex-shrink:0;
+                    -webkit-flex:4 0 0;-ms-flex:4 0 0;flex:4 0 0;-moz-flex:4 0 0;
+
+                    order:5;
+                    min-height:35px;
+                    max-height:35px;
+                    padding:0;
+                    margin-top:20px;
+
+
+
+                    > p {
+                        color:#dadada;
+                        font-size: rem(12);
+                    }
+
+                    @media screen and (max-width: $mobile-break){
+                        img{
+                            display: none;
+                        }
+                        p{
+                            font-family: $base-font-family;
+                            font-size: em(12);
+                            padding: 0;
+                            color: #FFF;
+                            margin-top:10px;
+                        }
+                    }
+                }
+        
+            }
+        }
+
+
+        &.social {
+            
+            .content {
+
+                .category {
+                    order:2;
+                }
+                >p {
+                    order:4;
+                }
+                time {
+                    order:3
+                }
+                .author {
+                    order:5;
+                }
+            }
+
+
+
+            &.facebook{
+                .category {
+                    &:before {
+                        order:1;
+                        content: '';
+                        width:25px;
+                        height:25px;
+                        background-image: url('../images/facebook.svg');
+                        background-position:center;
+                        background-size: contain;
+                        background-repeat:no-repeat;
+                        display:block;
+                        margin-bottom:18px;
+                    }
+                }
+            }
+            &.vimeo{
+            }
+
+            &.twitter{
+                .category {
+                    &:before {
+                        content: '';
+                        width:25px;
+                        height:25px;
+                        background-image: url('../images/twitter.svg');
+                        background-position:center;
+                        background-size: contain;
+                        background-repeat:no-repeat;
+                        display:block;
+                        margin-bottom:18px;
+                    }
+                }
+            }
+
+            &.instagram{
+                .category {
+                    &:before {
+                        content: '';
+                        width:25px;
+                        height:25px;
+                        background-image: url('../images/instagram.svg');
+                        background-position:center;
+                        background-size: contain;
+                        background-repeat:no-repeat;
+                        display:block;
+                        margin-bottom:18px;
+                    }
+                }
+            }    
+        }
+
+    }
+}

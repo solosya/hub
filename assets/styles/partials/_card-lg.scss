@@ -1,0 +1,199 @@
+.card-lg{
+    margin-bottom: 45px;
+
+    @media screen and (max-width: $mobile-break){
+        height:290px;
+        margin-bottom: 30px;
+        background: #000;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    a.card{
+        position: relative;
+        overflow:hidden;
+
+        height:375px;
+        @media screen and (max-width: $mobile-break){
+            height:100%;
+        }
+
+        &:after{
+            content: '';
+            opacity: 0.4;
+            background-color: #000;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        > article {
+
+            @media screen and (max-width: $mobile-break){
+                height:100%
+            }
+
+
+            > figure{
+                position: absolute;
+                left: 0;
+                top: 0;
+                height:100%;
+                width: 100%;
+
+
+                > img{
+                    max-width: 100%;
+                }
+            }
+
+
+            > .content{
+                padding: 40px 400px 20px 24px;
+                margin-bottom: 10px;
+                z-index: 100;
+                position: relative;
+                color: #FFF;
+
+                @media screen and (max-width: $mobile-break){
+                    padding: 97px 0 26px 18px;
+                }
+
+                > .category{
+                    order:1;
+                    font-size: rem(11);
+                    font-weight: bold;
+                    color: #fff;
+                    display: block;
+                    line-height: 1;
+                    margin-bottom:4px;
+
+                    @media screen and (max-width: $mobile-break){
+                        font-family: $font-family-sans-serif;
+                        font-size: em(10);
+                        margin-bottom:5px;
+                        text-transform:uppercase;
+                    }
+                }
+
+                > p {
+                    order:4;
+                    font-style: italic;
+                    font-family:$font-family-serif;
+                    font-size: rem(16);
+                    height: 60px;
+
+                    @media screen and (max-width: $mobile-break){
+                        font-size: rem(14);
+                    }
+                }
+
+                > h2{
+                    order:3;
+                    font-weight: bold;
+                    font-size: rem(24);
+                    height: 70px;
+                    line-height:1.3em;
+
+                    @media screen and (max-width: $md-break){
+                        height: 310px;
+                    }
+                    
+                    @media screen and (max-width: $mmd-break){
+                        height: auto;
+                    }
+
+                    @media screen and (max-width: $mobile-break){
+                        font-size: em(20);
+                        height: 50px;
+                        margin:0;
+                        padding-top: 0;
+                        border: 0;
+                    }
+
+                }
+
+                > .author{
+                    @include clearfix;
+                    padding-top:15px;
+                    order:5;
+
+                    @media screen and (max-width: $mobile-break){
+                        padding-top:0;
+                    }
+
+                    p{
+                        font-size: rem(12);
+                        color: #fff;
+                    }
+                }
+
+                > time{
+                    padding:0;
+                    font-style:italic;
+                    font-family:$font-family-serif;
+                    order:2;
+                    color: inherit;
+                    margin-bottom:47px;
+
+                    @media screen and (max-width: $mobile-break){
+                        margin-bottom:12px;
+                        border: 0;
+                        padding: 0;
+                        font-size: em(10);
+                    }
+                }
+            }
+        }
+
+        &.social {
+            .content {
+                // .category {
+                //     margin-top:0;
+                //     margin-bottom:8px;
+                // }
+        
+                > p {
+                    display:block;
+                    font-size: em(18);
+                    height: 280px;
+                    margin-top:40px;
+
+                    @media screen and (max-width: $mobile-break){
+                        height:auto;
+                    }
+
+                }
+            }
+
+            // &.without__image {
+
+            //     .content {
+            //         height:100%;
+
+            //         > p {
+            //             height: 182px;
+            //             margin-bottom:52px;
+
+            //             @media screen and (max-width: $mobile-break){
+            //                 height:auto;
+            //             }
+            //         }
+            //     }
+            // }
+
+        }
+
+
+        &.youtube{
+            .content{
+                p{
+                }
+            }
+        }
+
+
+    }
+}

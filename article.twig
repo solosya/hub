@@ -1,0 +1,168 @@
+{% import "partials/quotes.twig" as quotes %}
+
+
+{{ set(this, 'title', article.title) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData      = _Blog.getBlog() %}
+{% set blogName      = blogData.title %}
+
+
+{# {{this.registerJs("ArticleController.view();")}} #}
+{# {{this.registerJs("HomeController.blog();")}} #}
+
+{% set status = 'follow' %}
+{% set text = 'Follow +' %}
+{% set authorId = article.createdBy['id'] %}
+{% set authorGUID = article.createdBy['guid'] %}
+
+{% if not _User.isGuset() and _User.isUserFollowing('user', authorId)%}
+    {% set status = 'unfollow' %}
+    {% set text = 'Following -' %}
+{% endif %}
+{% set placeholder = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=1160&h=538' %}
+{% set imgWidth = 1140 %}
+{% set imgHeight = 493 %}
+
+{% set articleImg = false %}
+{% if article.media|length > 0 %}
+    {% set articleImg = _Media.getMediaUrl(article.media[0],imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
+{% endif %}
+
+{% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
+
+
+    <main id="main" class="site-main" role="main">
+
+        {% if articleImg %} 
+
+         <section class="page-hero">
+             <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject" 
+                  class="featured image-wrapper news__slide slide lazyload-remove" 
+                  data-thumbnail="{{articleImg}}" 
+                  data-original="{{articleImg}}" 
+                  style="background-image: url({{articleImg}})">
+
+                 <meta itemprop="url" content="{{articleImg}}">
+                 <meta itemprop="height" content="{{article.media[0].height}}">
+                 <meta itemprop="width" content="{{article.media[0].width}}">
+                 {% if article.media[0].type == 'video' %} 
+                     {% set mediaUrl = "" %}
+                     {% if article.media[0].isSystemVideo == 'TRUE'%}
+                         {% set mediaUrl = _article.media[0].getMediaVideoUrl(media, 0, 0,{resource_type: 'video', format: 'mp4'})  %}
+                     {% endif %}
+                     <a  href="javascript:void(0)"  
+                         itemprop="video" 
+                         class="video-overlay video-player" 
+                         data-source="{{article.media[0].source}}" 
+                         data-video-id="{{article.media[0].videoId}}" 
+                         data-url="{{mediaUrl}}" 
+                         data-poster="{{articleImg}}" 
+                         data-caption="{{article.title | raw}}">
+
+                        <div class="icons">
+                         
+                            <div class="icon"><i class="fa fa-play"></i></div>
+                        </div>
+                     </a>
+               
+                 {% endif %}
+
+                 <div class="social-share">
+                     <div class="links">
+                         <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="btn btn-post"></a
+                         ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="btn btn-tweet"></a>
+                     </div>
+                 </div>
+
+
+             </div>
+        </section><!--page-hero-->
+        {% endif %}
+
+
+
+
+
+
+
+        <article class="article-main">
+
+
+
+            <div class="container">
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-md-offset-2 col-md-8">
+                            <div class="content-wrapper">
+                                <div class="content-block-top">
+                                    <time>{{ article.publishedDate }}</time>
+                                    <h1>{{ quotes.smarten(article.title) }}</h1>
+
+                                    <p class="author">{{ article.createdBy['displayName'] }}</p>
+
+                                    {% if article.createdBy['bio'] %} 
+                                        <p class="bio">{{ article.createdBy['bio'] }}</p>
+                                    {% endif %}
+
+                                    {% if not _User.isGuest() %}
+                                        <a href="{{article.editUrl}}" target="_blank" class="" style="margin-left:20px;padding-top:5px">Edit article</a>
+                                    {% endif %}
+
+                                    <div class="time_to_read">
+                                        {% set readtime = 3 %}
+                                        {% if article.readingTime > 3 %}
+                                            {% set readtime = 4 %}
+                                        {% endif %}
+                                        {% if article.readingTime > 4 %}
+                                            {% set readtime = 7 %}
+                                        {% endif %}
+                                        {% if article.readingTime > 7 %}
+                                            {% set readtime = 10 %}
+                                        {% endif %}
+
+                                        <img src="{{networkData.templatePath}}/static/images/reading_time/{{readtime}}_min.svg" />
+                                        <p>{{article.readingTime}} minute read</p>
+                                    </div>
+
+
+
+                                </div><!--content-block-top-->
+
+                                <div class="article_content">
+                                    <p>{{ article.content | preg_replace('/^<p>/', '<p class="lead">') | raw }}</p>
+                                </div><!-- .content-->
+                            </div><!-- .content-->
+
+
+                        </div><!-- .col-md-8-->
+                    </div>
+                </div><!-- .page-content-->
+
+
+                <div class="related-articles">
+                    <div class="row">
+            
+                        <div class="col-sm-12">
+
+                            <section class="row">
+                                <h2>Related articles</h2>
+
+                                {% set popularArticles = _Article.getPopularArticles({ limit: 4, excludeArticleIds : article.id, sortBy : "VIEWS" }) %}
+                                {% if popularArticles|length > 0 %}
+                                    {% for article in popularArticles %}
+                                        {{this.render('partials/_single-article.twig', {article: article, containerClass: 'col-sm-6 col-md-3 card-sm s110x110'}) | raw}}
+                                    {% endfor %}
+                                {% else %}
+                                    <p class="nodata text-center">No data found.</p>
+                                {% endif %}
+                            </section>
+
+                        </div><!-- .col-md-12-->
+                    </div><!-- .row-->
+
+                </div>
+
+            </div><!--container-->
+        </article>
+    </main><!--site-main-->
+

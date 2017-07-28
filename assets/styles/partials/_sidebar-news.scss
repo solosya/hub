@@ -1,0 +1,210 @@
+.sidebar-news{
+    // margin-bottom: 100px;
+    
+    @media screen and (max-width: $mobile-break) {
+        margin-left:-15px;
+        margin-right:-15px;
+    }
+
+
+    header {
+        margin-bottom: 15px;
+        display: inline-block;
+        width: 100%;
+
+        > h3 {
+            font-size: rem(17);
+            font-family: $font-family-sans-serif;
+            font-weight: bold;
+            margin-top:0;
+            margin-bottom:0;
+            margin-left:15px;
+
+
+            @media screen and (max-width: $mobile-break) {
+                font-size: rem(17);
+                margin-left:18px;
+            }
+        }
+
+        > img{
+            float: right;
+        }
+    }
+
+    a.card {
+        margin-bottom: 5px;
+        height: 110px;
+        // width: 100%;
+       
+        @media screen and (max-width: $mobile-break){
+            height: 115px;
+            margin-bottom: 8px;
+            margin-left:-15px;
+            margin-right:-15px;
+        }
+
+
+        > article {
+
+            > figure {
+                width: 100px;
+                height:110px;
+                overflow: hidden;
+                float: left;
+
+                @media screen and (max-width: $mobile-break) {
+                    width: 115px;
+                    height:115px;
+                }
+
+                > img{
+                    max-width: 100%;
+                }
+            }
+
+            > .content{
+                height:110px;
+                padding: 7px 0 0 10px;
+                width: auto;
+                background:white;
+                
+                @media screen and (max-width: $mobile-break){
+                    height:115px;
+                }
+
+
+
+                > .category{
+                    font-size: em(11);
+                    font-weight: bold;
+                    display: block;
+                    line-height: 1;
+                    margin-bottom: 5px;
+                    
+                    @media screen and (max-width: $mobile-break){
+                        font-size: em(10);
+                    }
+                }
+
+                > h2{
+                    font-weight:normal;
+                    font-size: em(16);
+                    height: 64px;
+                    line-height:1.3em;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    
+                    @media screen and (max-width: $mobile-break){
+                        height: 60px;
+                    }
+
+
+
+                }
+
+                > p {
+                    display:none;
+                }
+
+                > .author{
+                    display: none;
+                }
+
+                > time{
+                    font-style:italic;
+                    font-size: rem(12);
+                    font-family:$font-family-serif;
+                    color: #979797;
+                    padding: 0;
+                    border: 0;
+                    line-height: 1;
+                }
+            }
+        }
+        &.social {
+            article {
+                .content {
+                    >p {
+                        display:block;
+
+                        font-weight:normal;
+                        font-size: em(16);
+                        height: 64px;
+                        line-height:1.3em;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        
+                        @media screen and (max-width: $mobile-break){
+                            height: 60px;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+
+    .card-sm {
+        @media screen and (max-width: $mmd-break-down){
+            a.card {
+                height:auto;
+
+                .content {
+                    height:242px;
+                    padding: 23px 28px 0 24px;
+
+                    .category {
+                        margin-bottom: 15px;
+                    }
+
+                    h2 {
+                        font-weight: bold;
+                        font-size: rem(24);
+                        height: 64px;
+                        margin-bottom: 7px;
+                        line-height: 1.3em;
+                    }
+                    >p {
+                        display:block;
+                        height: 66px;
+                        font-size: rem(16);
+                        padding-bottom: 16px;
+                        margin-bottom: 16px;
+                        border-bottom: 2px solid #dadada;
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: $mobile-break){
+            a.card {
+                height:auto;
+
+                .content {
+                    height:115px;
+                    padding: 7px 0 0 10px;
+
+                    .category {
+                        margin-bottom: 5px;
+                    }
+
+                    h2 {
+                        font-weight: normal;
+                        font-size: rem(16);
+                        // height: 64px;
+                        margin-bottom: 7px;
+                        line-height: 1.3em;
+                    }
+                    >p {
+                        display:none;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+
+}

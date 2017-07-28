@@ -1,0 +1,253 @@
+body.page {
+    .page-project {
+        
+        .page-banner {
+            height:560px;
+            // background:pink;
+            margin-bottom:180px;
+            background-image: url("http://res.cloudinary.com/cognitives/image/upload/c_fill,dpr_auto,f_auto,fl_lossy,g_faces,h_720,q_auto,w_1280/ibpe1rnsfvvsn3ugt7rb
+");
+            @media screen and (max-width: 1119px) and (min-width: 769px){
+                    margin-bottom:85px;
+                }
+            @media screen and (max-width: $sm-break){
+                background-position-x: -450px;
+                background-position-y: -150px;
+                height: 275px;
+            }
+            .cta {
+                height:346px;
+                width:353px;
+                background:#39bddc;
+                margin: 0;
+                margin-top: 214px;
+                padding: 60px 25px 0 25px;
+                
+                @media screen and (max-width: $sm-break){
+                    height: auto;
+                    width:100%;
+                    margin-top: 250px;
+                    padding: 35px 25px 10px 25px;
+                }
+
+
+
+
+                h1 {
+                    margin:0;
+                    color:#fff;
+                    font-weight: bold;
+                    line-height: 1.04;
+                    font-size:rem(48);
+                    margin-bottom: 25px;
+                    &:after {
+                        content:"";
+                        display:block;
+                        background:#fff;
+                        width:115px;
+                        height:1px;
+                        margin-top:30px;
+                    }
+
+                    @media screen and (max-width: $sm-break){
+                        font-size:rem(40);
+                    }
+                    @media screen and (max-width: $mobile-break){
+                        font-size:rem(30);
+                    }
+
+
+                }
+            }
+        }
+
+
+        .statement {
+            margin-bottom:170px;
+            @media screen and (max-width:  1119px){
+                margin-bottom:85px;
+            }
+            @media screen and (max-width: $sm-break){
+                margin-bottom:15px;
+            }
+
+            figure {
+                // background:pink;
+                // height: 235px;
+                margin-top:30px;
+                @media screen and (max-width: $sm-break){
+                    margin-bottom:20px;
+                }
+            }
+            
+            h2 {
+                font-size: rem(24);
+                font-weight: bold;
+                line-height: 1.33;
+                color: #000000;
+                margin: 0 0 25px 0;
+
+                > span {
+                    color:#39bddc;
+                }
+            }
+
+
+            p {
+                font-family: $font-family-sans-serif;
+                font-size: rem(20);
+                line-height: 1.8;
+                color: #333333;
+                margin-bottom:34px;
+                &:last-child {
+                    @media screen and (min-width: $sm-break){
+                        margin-bottom:0;
+                    }
+                }
+
+            }
+        }
+
+        .perspective {
+            margin-bottom:170px;
+            @media screen and (max-width:  1119px){
+                margin-bottom:85px;
+            }
+            @media screen and (max-width: $sm-break){
+                margin-bottom:15px;
+            }
+
+            figure {
+                // height: 258px;
+                // background:pink;
+                margin-top:30px;
+            }
+        
+            h2 {
+                font-size: rem(18);
+                font-weight: bold;
+                line-height: 1.78;
+                color: #39bddc;
+                margin:42px 0 20px 0;
+                text-transform:uppercase;
+                @media screen and (max-width: $sm-break){
+                    margin:15px 0 15px 0;
+                }
+            }
+
+            p {
+                color: #333333;
+                margin-bottom:34px;
+                font-size: rem(18);
+                @media screen and (max-width: $sm-break){
+                margin-bottom:15px;
+                }
+
+                &:last-child {
+                    @media screen and (min-width: $sm-break){
+                        margin-bottom:0;
+                    }
+                }
+
+            }
+
+
+
+        }
+
+
+        .full-image {
+            > div {
+                // background:pink;
+            }
+            img {
+                height:453px;
+            }
+        }
+
+        .journalists {
+            margin: 60px -15px 160px -15px;
+            @media screen and (max-width:  1119px){
+                 margin: 30px -15px 65px -15px;
+            }
+            @media screen and (max-width: $sm-break){
+                margin: 10px -15px 15px -15px;
+                
+            }
+            
+
+            h2 {
+                font-size: rem(24);
+                font-weight: bold;
+                line-height: 1.33;
+                color: #000000;
+                margin: 0 0 25px 0;
+
+                > span {
+                    color:#39bddc;
+                }
+            }
+
+            p {
+                font-size: 18px;
+                line-height: 1.44;
+                color: #333333;
+            }
+
+        }
+
+    
+
+        .hotspots {
+            margin-bottom:100px;
+            @media screen and (max-width:  1119px){
+                margin-bottom:50px;
+            }
+            @media screen and (max-width: $sm-break){
+                    margin-bottom:15px;
+                }
+
+            .hotspot {
+                margin-bottom:95px;
+                @media screen and (max-width:  1119px){
+                    margin-bottom:50px;
+                }
+                @media screen and (max-width: $sm-break){
+                    margin-bottom:15px;
+                }
+
+                figure {
+                    // background:pink;
+                    // height:231px;
+                    margin-top:30px;
+                }
+
+                h2 {
+                    font-size: 18px;
+                    line-height: 1.78;
+                    color: #333333;
+                    padding-bottom:12px;
+                    margin-bottom:18px;
+                    margin-top:10px;
+                    font-weight:normal;
+                    border-bottom:1px solid black;
+
+                }
+
+                p {
+                    font-size: rem(14);
+                    font-weight: bold;
+                    line-height: 1.57;
+                    color: #333333;
+                    margin-bottom:24px;
+                    @media screen and (max-width: $sm-break){
+                        margin-bottom:15px;
+                    }
+                }
+            }
+
+        }
+
+    }
+}
+

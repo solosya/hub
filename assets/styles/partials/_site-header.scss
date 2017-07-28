@@ -1,0 +1,101 @@
+.showOnScroll {
+    top:0 !important;
+}
+
+.fixHeader {
+    position:fixed;
+    top:-70px;
+}
+
+.site-header {
+    position:relative;
+    padding:0;
+    max-width:none;
+    z-index:140;
+
+    .site-header-main {
+        @include transition(100000s);
+
+        background:#333333;
+        height: 70px;
+        width:100%;
+
+
+        @media screen and (max-width: $mobile-break){
+            padding-top: 0;
+            height: 60px;
+
+        }
+        
+        input.field {
+            font-size: rem(20);
+        }
+
+        .navbar-brand {
+            padding:0;
+            height:46px;
+            @media screen and (max-width: $mobile-break){
+                margin-top:0;
+                padding:8px;
+            }
+            > img.mobile-logo {
+                @media screen and (min-width: $mobile-break){
+                    display:none;
+                }
+            }
+            > img.main-logo {
+                margin-top: 10px;
+                height:46px;
+
+                @media screen and (max-width: $mobile-break){
+                    display:none;
+                }
+
+            }
+
+        }
+        .navbar-right {
+            margin-top:25px;
+            @media screen and (max-width: $mobile-break){
+                margin-top:12px;
+            }
+
+
+
+            .section-links ul {
+                li {
+                    display:inline-block;
+                    margin-right:37px;
+                    
+                    a {
+                        font-family: $base-font-family;
+                        font-size: rem(14);
+                        color:white;
+                        letter-spacing: 2.2px;
+                    }
+                }
+                li.menu-item-search {
+                    width:40px;
+                    a {
+                        display:block;
+                    }
+                }
+            }
+        }
+
+
+
+
+    }
+
+    .site-header-buffer {
+        height:15px;
+        background:black;
+
+        @media screen and (max-width: $mobile-break){
+            display:none;
+        }
+    }
+
+
+}
