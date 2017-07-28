@@ -8478,7 +8478,8 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
     .site-header .site-header-main input.field {
       font-size: 2rem; }
     .site-header .site-header-main .navbar-brand {
-      padding: 0; }
+      padding: 0;
+      height: 60px; }
       @media screen and (max-width: 620px) {
         .site-header .site-header-main .navbar-brand {
           margin-top: 0;
@@ -8486,6 +8487,9 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
       @media screen and (min-width: 620px) {
         .site-header .site-header-main .navbar-brand > img.mobile-logo {
           display: none; } }
+      @media screen and (max-width: 620px) {
+        .site-header .site-header-main .navbar-brand > img.main-logo {
+          height: 60px; } }
     .site-header .site-header-main .navbar-right {
       margin-top: 25px; }
       @media screen and (max-width: 620px) {
