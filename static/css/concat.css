@@ -8486,9 +8486,6 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
       @media screen and (min-width: 620px) {
         .site-header .site-header-main .navbar-brand > img.mobile-logo {
           display: none; } }
-      @media screen and (max-width: 620px) {
-        .site-header .site-header-main .navbar-brand > img.main-logo {
-          display: none; } }
     .site-header .site-header-main .navbar-right {
       margin-top: 25px; }
       @media screen and (max-width: 620px) {
